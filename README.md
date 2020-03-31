@@ -8,13 +8,13 @@ Pasting from G-Docs and word is cleaned into sane(r) markup.
 
 # Composer
 
-Add this to your "repositories" section of your comoposer.json
+Add this to your "repositories" section of your comoposer.json<br />
 "ckeditor_tidy": { "url": "https://github.com/DanielVeza/ckeditor_tidy.git", "type": "git" }
 
-Add this to your "require" section
+Add this to your "require" section<br />
 "drupal/ckeditor_tidy": "dev-master"
 
-Run composer update
+Run composer update<br />
 composer update drupal/ckeditor_tidy
 
 # Sponsers
