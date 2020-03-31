@@ -15,7 +15,7 @@ Add this to your "require" section
 "drupal/ckeditor_tidy": "dev-master"
 
 Run composer update
-composer update drupal/sector_quiz
+composer update drupal/ckeditor_tidy
 
 # Sponsers
 
