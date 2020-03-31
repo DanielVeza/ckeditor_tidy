@@ -8,6 +8,8 @@
             var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
             var writer = new CKEDITOR.htmlParser.basicWriter();
             filter.disallow('*[*]');
+            filter.disallow('*[class]');
+            filter.disallow('*(class)');
             filter.disallow('*(*)');
             filter.disallow('*{*}');
             filter.disallow('span');
@@ -18,8 +20,12 @@
           });
           CKEDITOR.instances['edit-body-0-value'].on('paste', function (evt) {
               var filter = evt.editor.filter.clone();
-              filter.disallow('span');
-              filter.disallow('*[dir]');
+            filter.disallow('*[*]');
+            filter.disallow('*[class]');
+            filter.disallow('*(class)');
+            filter.disallow('*(*)');
+            filter.disallow('*{*}');
+            filter.disallow('span');
               evt.data.dataValue = formatting(evt.data.dataTransfer._.data['text/html']);
               var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
               var writer = new CKEDITOR.htmlParser.basicWriter();
@@ -77,7 +83,7 @@
         var parent = document.createElement("div");
         var parentCopy = document.createElement("div");
         parentCopy.innerHTML = str;
-        var len = parentCopy.childNodes[0].children.length;
+        var len = (parentCopy.childNodes[0].children) ? parentCopy.childNodes[0].children.length : 0;
         if (len === 0){
           return parentCopy.innerHTML;
         }
