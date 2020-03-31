@@ -1,0 +1,16 @@
+<?php
+
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Loads the JS + CSS for the admin theme.
+ */
+function ckeditor_tidy_page_attachments(array &$attachments)
+{
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  $adminTheme = \Drupal::service('config.factory')->get('system.theme')->get('admin');
+  if ($theme == $adminTheme) {
+    $attachments['#attached']['library'][] = 'ckeditor_tidy/ckeditor_tidy.admin';
+  }
+}

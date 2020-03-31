@@ -1,0 +1,4 @@
+ckeditor_tidy.admin:
+  version: 1.x
+  js:
+    js/ckeditor_pastePlainText.js: {}
