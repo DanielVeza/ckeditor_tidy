@@ -9,7 +9,7 @@ Pasting from G-Docs and word is cleaned into sane(r) markup.
 # Composer
 
 Add this to your "repositories" section of your comoposer.json
-"sector.quiz": { "url": "https://github.com/DanielVeza/sector-quiz.git", "type": "git" }
+"ckeditor_tidy": { "url": "https://github.com/DanielVeza/ckeditor_tidy.git", "type": "git" }
 
 Add this to your "require" section
 "drupal/ckeditor_tidy": "dev-master"
