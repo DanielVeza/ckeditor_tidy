@@ -1,0 +1,29 @@
+{
+    "name": "drupal/ckeditor_tidy",
+    "description": "Provides tools to clean markup in the ckeditor",
+    "type": "drupal-module",
+    "homepage": "https://drupal.org/project/ckeditor_tidy",
+    "authors": [
+        {
+            "name": "Sparks Interacitve",
+            "email": "sector@sparksinteractive.co.nz",
+            "homepage": "https://www.drupal.org/sparks-interactive",
+            "role": "Sponsor"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "repositories": {
+        "packagist.drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require": {
+    },
+    "extra": {
+        "enable-patching" : true,
+        "patches": {
+        }
+    }
+}
