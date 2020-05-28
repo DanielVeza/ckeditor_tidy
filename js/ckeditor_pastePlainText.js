@@ -28,10 +28,6 @@
               filter.disallow('*(style)');
               filter.disallow('span');
               filter.disallow('img');
-              //tmp rules
-              filter.disallow('*(*)');
-              filter.disallow('*{*}');
-              filter.disallow('*[*, ^href]');
               console.log(filter.allowedContent);
              // evt.data.dataValue = formatting(evt.data.dataTransfer._.data['text/html']);
               var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
