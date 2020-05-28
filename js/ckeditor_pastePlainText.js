@@ -7,11 +7,12 @@
             var filter = evt.editor.filter.clone();
             var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
             var writer = new CKEDITOR.htmlParser.basicWriter();
-            filter.disallow('*[*]');
-            filter.disallow('*[class]');
-            filter.disallow('*(class)');
             filter.disallow('*(*)');
             filter.disallow('*{*}');
+            filter.disallow('*[class]');
+            filter.disallow('*(class)');
+            filter.disallow('*[style]');
+            filter.disallow('*(style)');
             filter.disallow('span');
             // Process, and overwrite evt.data.dataValue.
             filter.applyTo(fragment);
@@ -19,19 +20,26 @@
             evt.data.dataValue = writer.getHtml();
           });
           CKEDITOR.instances['edit-body-0-value'].on('paste', function (evt) {
+            if (evt.data.dataTransfer._.data['text/html']) {
               var filter = evt.editor.filter.clone();
-            filter.disallow('*[*]');
-            filter.disallow('*[class]');
-            filter.disallow('*(class)');
-            filter.disallow('*(*)');
-            filter.disallow('*{*}');
-            filter.disallow('span');
-              evt.data.dataValue = formatting(evt.data.dataTransfer._.data['text/html']);
+              filter.disallow('*[class]');
+              filter.disallow('*(class)');
+              filter.disallow('*[style]');
+              filter.disallow('*(style)');
+              filter.disallow('span');
+              filter.disallow('img');
+              //tmp rules
+              filter.disallow('*(*)');
+              filter.disallow('*{*}');
+              filter.disallow('*[*, ^href]');
+              console.log(filter.allowedContent);
+             // evt.data.dataValue = formatting(evt.data.dataTransfer._.data['text/html']);
               var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
               var writer = new CKEDITOR.htmlParser.basicWriter();
               filter.applyTo(fragment);
               fragment.writeHtml(writer);
               evt.data.dataValue = writer.getHtml();
+            }
           });
         }
       function recursiveFormatting(context) {
