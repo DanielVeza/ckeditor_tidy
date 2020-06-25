@@ -2,7 +2,8 @@
   Drupal.behaviors.PastePlainText = {
     attach: function (context, settings) {
       $(document).ready(function() {
-        if (typeof(CKEDITOR) !== 'undefined') {
+        console.log([CKEDITOR.instances, CKEDITOR.instances['edit-body-0-value']]);
+        if (typeof(CKEDITOR) !== 'undefined' && CKEDITOR.instances['edit-body-0-value'] !== undefined) {
           CKEDITOR.instances['edit-body-0-value'].on('afterPasteFromWord', function (evt) {
             var filter = evt.editor.filter.clone();
             var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
@@ -28,7 +29,6 @@
               filter.disallow('*(style)');
               filter.disallow('span');
               filter.disallow('img');
-              console.log(filter.allowedContent);
              // evt.data.dataValue = formatting(evt.data.dataTransfer._.data['text/html']);
               var fragment = CKEDITOR.htmlParser.fragment.fromHtml(evt.data.dataValue);
               var writer = new CKEDITOR.htmlParser.basicWriter();
