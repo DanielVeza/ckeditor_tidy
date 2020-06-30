@@ -2,6 +2,9 @@
   Drupal.behaviors.PastePlainText = {
     attach: function (context, settings) {
       $(document).ready(function() {
+        if(window.CKEDITOR === undefined){
+          return;
+        }
         console.log([CKEDITOR.instances, CKEDITOR.instances['edit-body-0-value']]);
         if (typeof(CKEDITOR) !== 'undefined' && CKEDITOR.instances['edit-body-0-value'] !== undefined) {
           CKEDITOR.instances['edit-body-0-value'].on('afterPasteFromWord', function (evt) {
